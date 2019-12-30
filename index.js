@@ -44,8 +44,9 @@ Promise.all([
         data: null,
       });
     });
-    app.listen(process.env.PORT || 8000, function() {
-      console.log(`Listening on *:3000`);
+    const port = process.env.PORT || 8000;
+    app.listen(port, function() {
+      console.log(`Listening on *:${port}.`);
     });
   })
   .catch(err => {
