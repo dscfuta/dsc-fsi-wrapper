@@ -3,7 +3,7 @@ const {
   sha256,
   getTodaysDate,
   aesEncrypt,
-  aesDecrypt
+  aesDecrypt,
 } = require("./utils");
 
 const debug = require("debug")("fsi-wrapper:ResetCredentials");
@@ -14,20 +14,20 @@ const API_URL = process.env.API_URL;
 const endpointMap = {
   fp: "fp",
   verify: "bvnr",
-  validate: "BVNPlaceHolder"
+  validate: "BVNPlaceHolder",
 };
 
 class ResetCredentials {
   static Types = Object.freeze({
     FINGERPRINT: "fp",
     VERIFICATION: "verify",
-    VALIDATION: "validate"
+    VALIDATION: "validate",
   });
 
   _credentials = {
     fp: null,
     verify: null,
-    validate: null
+    validate: null,
   };
 
   reset(type = ResetCredentials.Types.VERIFICATION) {
@@ -48,8 +48,8 @@ class ResetCredentials {
           method: "POST",
           headers: {
             OrganisationCode: toBase64(organisationCode),
-            "Sandbox-Key": sandboxKey
-          }
+            "Sandbox-Key": sandboxKey,
+          },
         })
           .then(res => {
             debug(`Got response with status code ${res.status}`);
@@ -62,7 +62,7 @@ class ResetCredentials {
                 password: header("password"),
                 email: header("email"),
                 code: header("code"),
-                name: header("name")
+                name: header("name"),
               };
               const getRequestHeaders = () => {
                 const headers = {
@@ -76,7 +76,7 @@ class ResetCredentials {
                     `${details.code}:${details.password}`
                   ),
                   "Content-Type": "application/json",
-                  Accept: "application/json"
+                  Accept: "application/json",
                 };
                 return headers;
               };
@@ -86,7 +86,7 @@ class ResetCredentials {
                 details,
                 getRequestHeaders,
                 encryptBody,
-                decryptBody
+                decryptBody,
               };
               this._credentials[type] = credentials;
               resolve(credentials);
@@ -108,5 +108,5 @@ class ResetCredentials {
 
 module.exports = {
   default: new ResetCredentials(),
-  ResetCredentialsTypes: ResetCredentials.Types
+  ResetCredentialsTypes: ResetCredentials.Types,
 };

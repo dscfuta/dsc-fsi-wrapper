@@ -1,7 +1,7 @@
 const debug = require("debug")("fsi-wrapper:reset");
 const {
   default: ResetCredentials,
-  ResetCredentialsTypes
+  ResetCredentialsTypes,
 } = require("../ResetCredentials");
 
 function resetIfNeeded(type = ResetCredentialsTypes.VERIFICATION) {

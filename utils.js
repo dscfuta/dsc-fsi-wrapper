@@ -48,15 +48,15 @@ const formatResponse = ({ status, response }) => {
       status: "error",
       error: {
         code: response.ResponseCode,
-        message: response.Message
+        message: response.Message,
       },
-      data: null
+      data: null,
     };
   } else {
     return {
       status: "success",
       error: null,
-      data: response.data
+      data: response.data,
     };
   }
 };

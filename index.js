@@ -4,7 +4,7 @@ const jsonMiddleware = require("express").json;
 const debug = require("debug")("fsi-wrapper");
 const {
   default: ResetCredentials,
-  ResetCredentialsTypes
+  ResetCredentialsTypes,
 } = require("./ResetCredentials");
 const router = require("./routes");
 
@@ -27,7 +27,7 @@ if (
 Promise.all([
   ResetCredentials.reset(ResetCredentialsTypes.VERIFICATION),
   ResetCredentials.reset(ResetCredentialsTypes.VALIDATION),
-  ResetCredentials.reset(ResetCredentialsTypes.FINGERPRINT)
+  ResetCredentials.reset(ResetCredentialsTypes.FINGERPRINT),
 ])
   .then(() => {
     app.use(jsonMiddleware());
@@ -39,9 +39,9 @@ Promise.all([
         status: "error",
         error: {
           code: "E_INTERNAL",
-          message: "An internal error occured"
+          message: "An internal error occured",
         },
-        data: null
+        data: null,
       });
     });
     app.listen(8000, function() {

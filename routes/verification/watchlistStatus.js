@@ -6,15 +6,15 @@ function watchlistStatus(req, res, next) {
   const { getRequestHeaders, encryptBody, decryptBody } = req.apiCredentials;
   const BVN = req.params.BVN;
   const body = JSON.stringify({
-    BVN
+    BVN,
   });
   debug(`Making a request to /bvnr/IsBVNWatchlisted`);
   return fetch(`${API_URL}/bvnr/IsBVNWatchlisted`, {
     method: "POST",
     headers: {
-      ...getRequestHeaders()
+      ...getRequestHeaders(),
     },
-    body: encryptBody(body)
+    body: encryptBody(body),
   })
     .then(sandboxRes => {
       debug(`Got response with status code ${sandboxRes.status}`);
@@ -27,7 +27,7 @@ function watchlistStatus(req, res, next) {
         res.status(sandboxRes.status).json(
           formatResponse({
             status: sandboxRes.status,
-            response: respJSON
+            response: respJSON,
           })
         );
       });
