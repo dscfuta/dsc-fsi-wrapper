@@ -1,0 +1,32 @@
+{
+  "name": "dsc-fsi-wrapper",
+  "version": "1.0.0",
+  "description": "An API that wraps around FSI's NIBSS Sandbox, exposing a much simpler interface",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dsc",
+    "fsi",
+    "nibss",
+    "sandbox"
+  ],
+  "author": "tehlordvortex",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tehlordvortex/dsc-fsi-wrapper"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
