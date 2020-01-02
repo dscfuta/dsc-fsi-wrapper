@@ -32,6 +32,16 @@ Promise.all([
   .then(() => {
     app.use(jsonMiddleware());
     app.use("/api", router);
+    app.use(function(req, res, next) {
+      res.status(404).send({
+        status: "error",
+        data: null,
+        error: {
+          code: "E_NOTFOUND",
+          message: "The requested endpoint does not exist",
+        },
+      });
+    });
     app.use(function(err, req, res, next) {
       debug(`An internal error occured: ${err.message}`);
       debug(`   ${err.stack}`);
